@@ -1,174 +1,308 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-/*  Register form */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+/* Common styles for both Register and Login */
+.Register, .Login {
+  max-width: 450px;
+  margin: 50px auto;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.Register::before, .Login::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+/* Headings */
+.Register h2, .Login h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 600;
+  position: relative;
+}
+
+.Register h2::after, .Login h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
+/* Form styling */
+.Register form, .Login form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Input fields */
+.Register input, .Login input {
+  width: 100%;
+  padding: 15px 20px;
+  border: 2px solid #e1e5e9;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+}
+
+.Register input:focus, .Login input:focus {
+  border-color: #667eea;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-2px);
+}
+
+.Register input::placeholder, .Login input::placeholder {
+  color: #999;
+  font-weight: 400;
+}
+
+/* Button styling */
+.Register button, .Login button {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+
+.Register button:hover, .Login button:hover {
+  background: linear-gradient(135deg, #5a67d8, #6b46c1);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.Register button:active, .Login button:active {
+  transform: translateY(-1px);
+}
+
+/* Message styling */
+.Register p, .Login p {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: 500;
+  padding: 10px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Success message */
+.Register p.success, .Login p.success {
+  color: #28a745;
+  background: rgba(40, 167, 69, 0.1);
+  border: 1px solid rgba(40, 167, 69, 0.2);
+}
+
+/* Error message */
+.Register p:not(.success), .Login p:not(.success) {
+  color: #dc3545;
+  background: rgba(220, 53, 69, 0.1);
+  border: 1px solid rgba(220, 53, 69, 0.2);
+}
+
+/* Link styling */
+.Register a, .Login a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.Register a:hover, .Login a:hover {
+  color: #5a67d8;
+  text-decoration: underline;
+}
+
+/* Navigation text */
+.Register > p:last-child, .Login > p:last-child {
+  text-align: center;
+  margin-top: 25px;
+  color: #666;
+  font-size: 14px;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* Specific Register styling */
 .Register {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #f0f8ff;
-    border-radius: 8px;
-    font-family: Arial, sans-serif;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .Register input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  
-  .Register input:focus {
-    border-color: #007bff;
-    outline: none;
-  }
-  
-  .Register button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .Register button:hover {
-    background-color: #0056b3;
-  }
-  
-  .message {
-    text-align: center;
-    margin-top: 10px;
-    font-weight: 500;
-    color: #d9534f;
-  }
-  
-  .message.success {
-    color: #28a745;
-  }
-  
+  background: rgba(240, 248, 255, 0.95);
+}
 
-  /*  Login form */
-  .Login {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #f5faff;
-    border-radius: 8px;
-    font-family: Arial, sans-serif;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+/* Specific Login styling */
+.Login {
+  background: rgba(245, 250, 255, 0.95);
+}
+
+/* Animation for form appearance */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  
-  .Login input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .Login input:focus {
-    border-color: #007bff;
-    outline: none;
+}
+
+.Register, .Login {
+  animation: slideInUp 0.6s ease forwards;
+}
+
+/* Input animation */
+@keyframes inputFocus {
+  0% {
+    box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4);
   }
-  
-  .Login button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
+  70% {
+    box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
   }
-  
-  .Login button:hover {
-    background-color: #0056b3;
+  100% {
+    box-shadow: 0 0 0 0 rgba(102, 126, 234, 0);
   }
-  
-  .message {
-    text-align: center;
-    margin-top: 10px;
-    font-weight: 500;
-    color: #d9534f;
-  }
-  
-  .message.success {
-    color: #28a745;
+}
+
+.Register input:focus, .Login input:focus {
+  animation: inputFocus 0.6s ease-out;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .Register, .Login {
+    margin: 20px;
+    padding: 30px 25px;
+    max-width: none;
   }
 
-
-
-
-
-
-
-
-
-/* product-filter */
-
-  /* styling.css */
-
-/* Container */
-.product-adder {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 30px;
-    background: #f0f9ff;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    font-family: sans-serif;
+  .Register h2, .Login h2 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
   }
-  
-  /* Heading */
-  .product-adder h2 {
-    text-align: center;
-    color: #0077cc;
+
+  .Register input, .Login input {
+    padding: 12px 15px;
+    font-size: 15px;
+  }
+
+  .Register button, .Login button {
+    padding: 12px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Register, .Login {
+    margin: 10px;
+    padding: 25px 20px;
+  }
+
+  .Register h2, .Login h2 {
+    font-size: 1.6rem;
     margin-bottom: 20px;
   }
-  
-  /* Input fields */
-  .product-adder input {
-    width: 100%;
+
+  .Register input, .Login input {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .Register button, .Login button {
     padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
+    font-size: 14px;
   }
-  
-  /* Submit button */
-  .product-adder button {
-    width: 100%;
-    padding: 10px;
-    background-color: #0077cc;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .product-adder button:hover {
-    background-color: #005fa3;
-  }
-  
-  /* Message */
-  .product-adder p {
-    margin-top: 15px;
-    text-align: center;
-    color: green;
-    font-weight: bold;
-  }
-  
+}
+
+/* Loading state for buttons */
+.Register button:disabled, .Login button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.Register button:disabled:hover, .Login button:disabled:hover {
+  background: #ccc;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Form validation styling */
+.Register input:invalid, .Login input:invalid {
+  border-color: #dc3545;
+}
+
+.Register input:valid, .Login input:valid {
+  border-color: #28a745;
+}
+
+/* Custom scrollbar for the page */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 126, 234, 0.7);
+}
+
+/* Background pattern */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}

@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
-import Register from './components/Register';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login';
-import './App.css';
+import Register from './components/Register';
+import Home from './components/Home';
 
-export default function App() {
-  const [showLogin, setShowLogin] = useState(true);
-
+function App() {
   return (
-    <div className="app-container">
-      <h1>{showLogin ? 'Login' : 'Register'}</h1>
-      {showLogin ? <Login /> : <Register />}
-      <p
-        style={{ marginTop: 20, cursor: 'pointer', color: 'blue' }}
-        onClick={() => setShowLogin(!showLogin)}
-      >
-        {showLogin
-          ? 'Need an account? Register here'
-          : 'Already have an account? Login here'}
-      </p>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Navigate to="/register" />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
+
+export default App;
