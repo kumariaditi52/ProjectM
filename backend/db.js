@@ -7,9 +7,6 @@ const db = mysql.createConnection({
   password: '',
   database: 'auth_demo',
   port: 3306,
-  connectTimeout: 60000,
-  acquireTimeout: 60000,
-  timeout: 60000
 });
 
 db.connect(err => {

@@ -7,7 +7,6 @@ const { getUserByEmail } = require('../models/userModel');
 router.post('/', async (req, res) => {
   const { email, password } = req.body;
 
-  // Validation
   if (!email || !password) {
     return res.status(400).json({ message: 'Please fill all fields' });
   }
@@ -20,31 +19,28 @@ router.post('/', async (req, res) => {
       }
 
       if (results.length === 0) {
-        return res.status(401).json({ message: 'Invalid email or password' });
+        return res.status(401).json({ message: 'Invalid credentials' });
       }
 
       const user = results[0];
-      
-      // Compare password
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
-        return res.status(401).json({ message: 'Invalid email or password' });
+        return res.status(401).json({ message: 'Invalid credentials' });
       }
 
-      // Generate JWT token
+      // Create JWT token
       const token = jwt.sign(
         { 
           userId: user.id, 
           email: user.email,
           username: user.username 
         },
-        process.env.JWT_SECRET,
+        process.env.JWT_SECRET || 'your_jwt_secret_here',
         { expiresIn: '24h' }
       );
 
-      // Send success response
-      res.status(200).json({
+      res.json({
         message: 'Login successful',
         token: token,
         user: {
